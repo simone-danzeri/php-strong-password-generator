@@ -31,6 +31,12 @@ $passwordLength = isset($_GET['password']) ? intval($_GET['password']) : 0;
 require_once __DIR__ . '/functions.php';
 ?>
 
+<!-- SESSION -->
+<?php
+session_start();
+$_SESSION['userPassword'] = $userPassword;
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -57,9 +63,9 @@ require_once __DIR__ . '/functions.php';
 
     <div class="container text-center">
         <?php if($passwordLength !== 0) { ?>
-            <p class="fs-3">La tua nuova password è: <small class="fw-lighter"><?php echo $userPassword ?></small></p>
+            <?php header('Location: result.php') ?>
         <?php } else {?>
-            <p class="fs-2 text-danger">Perfavore inserisci un numero maggiore di 0</p>
+            <p class="alert alert-danger mt-4">Inserisci un numero maggiore di 0</p>
         <?php } ?>
     </div>
     <!--Bootstrap JS link-->
