@@ -24,7 +24,7 @@ $characters = array_merge($lowercaseLetters, $uppercaseLetters, $symbols);
 //var_dump($characters);
 
 // Metto il vaore scelto dall'utente dentro una variabile
-$passwordLength = isset($_GET['password']) ? intval($_GET['password']) : 0;
+$passwordLength = isset($_GET['password']) ? intval($_GET['password']) : '';
 // var_dump($passwordLength);
 
 // Includo il file con la funzione
@@ -62,7 +62,7 @@ $_SESSION['userPassword'] = $userPassword;
     </div>
 
     <div class="container text-center">
-        <?php if($passwordLength !== 0) { ?>
+        <?php if($passwordLength !== 0 && $passwordLength !== '') { ?>
             <?php header('Location: result.php') ?>
         <?php } else {?>
             <p class="alert alert-danger mt-4">Inserisci un numero maggiore di 0</p>
