@@ -18,8 +18,14 @@ $symbols = [
     '§'
 ];
 
+
+//Array con i numeri
+$numbers = [];
+for ($i = 0; $i < 10; $i++) {
+    $numbers[] = $i;
+}
 // Array finale con tutti i caratteri da usare per le password
-$characters = array_merge($lowercaseLetters, $uppercaseLetters, $symbols);
+$characters = array_merge($lowercaseLetters, $uppercaseLetters, $symbols, $numbers);
 
 //var_dump($characters);
 
@@ -54,7 +60,7 @@ $_SESSION['userPassword'] = $userPassword;
     <div class="container ms-background">
         <form method="GET">
             <div class="mb-3">
-                <label for="password" class="form-label">Di quanti caratteri vuoi la tua super sicura password?</label>
+                <label for="password" class="form-label">Di quanti caratteri vuoi la tua password super sicura?</label>
                 <input type="text" class="form-control" id="password" name="password" value="<?php echo $passwordLength ?>">
             </div>
             <button type="submit" class="btn btn-primary">Genera</button>
