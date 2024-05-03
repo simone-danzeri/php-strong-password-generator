@@ -24,21 +24,11 @@ $characters = array_merge($lowercaseLetters, $uppercaseLetters, $symbols);
 //var_dump($characters);
 
 // Metto il vaore scelto dall'utente dentro una variabile
-$passwordLength = isset($_GET['password']) ? intval($_GET['password']) : '';
+$passwordLength = isset($_GET['password']) ? intval($_GET['password']) : 0;
 // var_dump($passwordLength);
 
-
-// Creo la pw con $passwordLength caratteri presi random dall'array $characters
-function getRandomPassword($length, $array)
-{
-    $randomPassword = '';
-    for($i = 0; $i < $length; $i++) {
-        $randomIndex = array_rand($array);
-        $randomPassword = $randomPassword . $array[$randomIndex];
-    }
-    return $randomPassword;
-}
-$userPassword = getRandomPassword($passwordLength, $characters);
+// Includo il file con la funzione
+require_once __DIR__ . '/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +59,7 @@ $userPassword = getRandomPassword($passwordLength, $characters);
         <?php if($passwordLength !== 0) { ?>
             <p class="fs-3">La tua nuova password è: <small class="fw-lighter"><?php echo $userPassword ?></small></p>
         <?php } else {?>
-            <p class="fs-2 text-danger">Perfavore inserisci un numero</p>
+            <p class="fs-2 text-danger">Perfavore inserisci un numero maggiore di 0</p>
         <?php } ?>
     </div>
     <!--Bootstrap JS link-->
